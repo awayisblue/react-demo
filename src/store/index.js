@@ -1,16 +1,13 @@
 /**
  * Created by John on 2017/2/28.
  */
-import {createStore} from 'redux'
-import reduxShape from 'redux-shape'
-import demo from './reducers/demo'
-
-let shape = {
-    text:()=>demo,// a leaf should be returned inside a function.
-}
-
-let reducer = reduxShape({shape:shape})
-let store = createStore(reducer)
-export let dispatch = store.dispatch
-export let getState =  store.getState
+import {createStore,applyMiddleware} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import reducers from './reducers'
+import initializers from './initializers'
+import sagas from './sagas'
+const sagaMiddleware = createSagaMiddleware()
+let store = createStore(reducers,applyMiddleware(sagaMiddleware))
+sagaMiddleware.run(sagas)
+initializers(store)
 export default store

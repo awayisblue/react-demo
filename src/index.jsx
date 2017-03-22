@@ -5,10 +5,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './store'
-import Loader from './components/Loader'
+import Counter from './containers/Counter'
 render(
     <Provider store={store}>
-        <Loader />
+        <Counter />
     </Provider>,
     document.getElementById('root')
 )

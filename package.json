@@ -11,14 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ent": "^2.2.0",
-    "howler": "^2.0.2",
-    "moment": "^2.17.1",
-    "node-uuid": "^1.4.7",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-saga": "^0.14.3",
+    "redux-shape": "^1.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.5",
@@ -33,14 +31,12 @@
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "keymaster": "^1.6.2",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "postcss-loader": "^1.3.2",
     "postcss-smart-import": "^0.6.9",
     "precss": "^1.4.0",
     "recss": "^0.0.0",
-    "redux-shape": "^1.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.8.5",
     "webpack-dev-server": "^1.4.7"
