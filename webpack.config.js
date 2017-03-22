@@ -1,9 +1,10 @@
-var webpack = require('webpack');
-var path = require('path');
-var BUILD_DIR = path.resolve(__dirname, '');
-var APP_DIR = path.resolve(__dirname, 'src');
-
-var config = {
+const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs')
+const BUILD_DIR = path.resolve(__dirname, 'dist');
+const APP_DIR = path.resolve(__dirname, 'src');
+// const babelSettings = JSON.parse(fs.readFileSync(".babelrc"))
+let config = {
   entry: ['babel-polyfill',APP_DIR + '/index.jsx'],
   output: {
     path: BUILD_DIR,
@@ -25,20 +26,7 @@ var config = {
   },
   plugins:[
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    // new webpack.optimize.UglifyJsPlugin({
-    //
-    //     // Eliminate comments
-    //     comments: false,
-    //
-    //     // Compression specific options
-    //     compress: {
-    //         // remove warnings
-    //         warnings: false,
-    //
-    //         // Drop console statements
-    //         drop_console: true
-    //     },
-    // })
+
 
   ],
   resolve: {
@@ -47,5 +35,27 @@ var config = {
     devServer:{
     }
 };
+if (process.env.NODE_ENV === 'production') {
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+
+            // Eliminate comments
+            comments: false,
+
+            // Compression specific options
+            compress: {
+                // remove warnings
+                warnings: false,
+
+                // Drop console statements
+                drop_console: true
+            },
+        })
+    )
+
+
+} else {
+
+}
 
 module.exports = config;
